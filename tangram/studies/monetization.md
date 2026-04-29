@@ -1,0 +1,4 @@
+- **MVP Phase:** Free to use for all users to drive initial adoption and listing volume
+- **Post-MVP:** Dealer subscription tiers (bulk listings, advanced analytics), featured listing upsells (priority search placement)
+- **Future:** Referral fees for integrated financing partners, verified seller badge fees, lead generation fees for dealerships
+- *Note: No ad-supported model to maintain clean, premium Meta-inspired UI per design-ui.md*

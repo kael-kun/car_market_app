@@ -1,0 +1,1 @@
+Primary objective: Launch a trusted, easy-to-use Used Car Marketplace MVP that enables seamless used car listing, discovery, and communication between buyers and sellers. Success metrics (per PRD): 100 active listings, 50 buyer-seller interactions, and 20% conversion rate (listing to sale inquiry) within 90 days of MVP launch.

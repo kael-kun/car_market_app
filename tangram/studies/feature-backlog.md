@@ -1,0 +1,20 @@
+Brainstormed features beyond core PRD requirements:
+- **MVP (Must-Have):**
+  - Email/password + social auth via Supabase
+  - Multi-image upload to Cloudflare R2 for listings
+  - Filter by price, brand, location, mileage, year
+  - Basic contact/messaging system for buyers/sellers
+- **Post-MVP (Should-Have):**
+  - Saved favorites list for buyers
+  - Side-by-side vehicle comparison tool
+  - Seller rating/review system
+  - Admin moderation dashboard (approve/reject listings, manage users)
+  - Listing view analytics for sellers
+  - Email/push notifications for messages, listing updates
+- **Future (Nice-to-Have):**
+  - AI-powered price suggestions for sellers
+  - VIN/history check integration
+  - In-app financing options
+  - Dealer bulk listing subscriptions
+  - Personalized car recommendations
+  - PWA support for mobile-like experience

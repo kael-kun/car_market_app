@@ -1,0 +1,1 @@
+Greenfield project (built from scratch, no existing codebase or legacy dependencies). Regression avoidance goals: All new code must pass Vitest unit tests, adhere to design-ui.md specifications, and follow feature-based module architecture per constitution draft.

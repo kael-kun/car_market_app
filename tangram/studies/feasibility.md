@@ -1,0 +1,2 @@
+Ongoing web service (not one-off). MVP scope (auth, listing CRUD, search/filter, basic messaging) is feasible with the selected tech stack (AstroJS + Supabase + Prisma + Cloudflare Workers) given the modular feature-based architecture.
+*Assumption: No formal budget specified by user—assumed bootstrap/low-cost using free tiers of Supabase and Cloudflare Workers initially. Estimated MVP timeline: 8-12 weeks for solo developer/small team.*

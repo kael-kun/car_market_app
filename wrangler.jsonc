@@ -1,0 +1,64 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "name": "car-marketplace",
+  "compatibility_date": "2026-04-29",
+  "compatibility_flags": ["nodejs_compat"],
+  
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  
+  "preview_urls": false,
+  "workers_dev": true,
+  
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  
+  "r2_buckets": [
+    {
+      "binding": "CAR_IMAGES",
+      "bucket_name": "car-marketplace-images",
+      "remote": true
+    }
+  ],
+  
+  "vars": {
+    "SUPABASE_URL": "https://your-project.supabase.co",
+    "SUPABASE_ANON_KEY": "your-anon-key"
+  },
+  
+  "env": {
+    "production": {
+      "name": "car-marketplace",
+      "vars": {
+        "SUPABASE_URL": "https://your-project.supabase.co",
+        "SUPABASE_ANON_KEY": "your-anon-key"
+      },
+      "r2_buckets": [
+        {
+          "binding": "CAR_IMAGES",
+          "bucket_name": "car-marketplace-images-prod",
+          "remote": true
+        }
+      ]
+    },
+    "development": {
+      "name": "car-marketplace-dev",
+      "vars": {
+        "SUPABASE_URL": "https://your-dev-project.supabase.co",
+        "SUPABASE_ANON_KEY": "your-dev-anon-key"
+      },
+      "r2_buckets": [
+        {
+          "binding": "CAR_IMAGES",
+          "bucket_name": "car-marketplace-images-dev",
+          "remote": true
+        }
+      ]
+    }
+  }
+}

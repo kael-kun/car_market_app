@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model (managed by Supabase Auth, table for additional user data)
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique @map("email")
+  username      String?  @unique @map("username") // Optional username (required for admin)
+  password_hash String?  @map("password_hash") // For admin users (Supabase Auth handles regular users)
+  role          String   @default("buyer") @map("role") // buyer, seller, admin
+  created_at    DateTime @default(now()) @map("created_at")
+  updated_at    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  listings          Listing[]
+  sent_messages      Message[] @relation("SentMessages")
+  received_messages Message[] @relation("ReceivedMessages")
+
+  @@map("users")
+}
+
+// Car listing model
+model Listing {
+  id           String   @id @default(uuid()) @map("id")
+  seller_id    String   @map("seller_id")
+  title        String   @map("title")
+  price        Int      @map("price")
+  brand        String   @map("brand")
+  model        String   @map("model")
+  year         Int      @map("year")
+  mileage      Int      @map("mileage")
+  transmission String   @map("transmission") // automatic, manual
+  fuel_type    String   @map("fuel_type") // gas, diesel, electric, hybrid
+  location     String   @map("location")
+  description  String   @map("description")
+  image_urls   String[] @map("image_urls") // Array of R2 image URLs
+  status       String   @default("pending") @map("status") // pending, approved, rejected
+  created_at   DateTime @default(now()) @map("created_at")
+  updated_at   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  seller   User     @relation(fields: [seller_id], references: [id])
+  messages Message[]
+
+  @@map("listings")
+}
+
+// Messaging model
+model Message {
+  id           String   @id @default(uuid()) @map("id")
+  sender_id    String   @map("sender_id")
+  receiver_id  String   @map("receiver_id")
+  listing_id   String   @map("listing_id")
+  content      String   @map("content")
+  read         Boolean  @default(false) @map("read")
+  created_at   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  sender    User     @relation("SentMessages", fields: [sender_id], references: [id])
+  receiver  User     @relation("ReceivedMessages", fields: [receiver_id], references: [id])
+  listing   Listing  @relation(fields: [listing_id], references: [id])
+
+  @@map("messages")
+}
